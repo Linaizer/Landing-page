@@ -1,0 +1,923 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+h2,
+a,
+p,
+h4 {
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+b {
+    color: aqua;
+}
+
+a:hover {
+    transform: scale(1.1);
+    color: #FF7A00;
+}
+
+.navbar-block {
+    background-color: black;
+    width: auto;
+    height: 55px;
+}
+
+.navbar-box {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 200px 0 210px;
+}
+
+.nav-tag>p {
+    color: whitesmoke;
+}
+
+.nav-links {
+    display: flex;
+    gap: 28px;
+}
+
+.burger-wrap {
+    position: absolute;
+    width: fit-content;
+}
+
+.burger {
+    font-size: 28px;
+    padding: 10px 12px;
+    cursor: pointer;
+    background: #ddd;
+    border-radius: 6px;
+    user-select: none;
+    display: none;
+    width: 100px;
+    text-align: center;
+}
+
+.menu {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.35s ease, opacity 0.25s ease;
+    background: #222;
+    color: #fff;
+    border-radius: 8px;
+    margin-top: 64px;
+    margin-left: 14px;
+}
+
+.menu.active {
+    max-height: 300px;
+    opacity: 1;
+}
+
+.menu a {
+    display: block;
+    padding: 12px 16px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.menu a:hover {
+    background: #333;
+}
+
+.header-block {
+    display: flex;
+    height: 600px;
+    width: auto;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: whitesmoke;
+    background-image: url('images/party.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.header-content-title {
+    font-size: 30px;
+    padding-bottom: 20px;
+}
+
+.header-content {
+    line-height: 40px;
+}
+
+.header-content-button {
+    margin-top: 20px;
+}
+
+.bookBtn {
+    width: 180px;
+    height: 45px;
+    border-radius: 8px;
+    color: black;
+    background-color: yellow;
+    border: none;
+    font-weight: 800;
+    box-shadow: 0 0 12px 3px #ffe600;
+    transition: 0.25s ease;
+    cursor: pointer;
+}
+
+.bookBtn:hover {
+    transform: scaleY(1.1);
+    background-color: #ffea00;
+    box-shadow: 0 0 18px 5px #fff200;
+}
+
+.main-block {
+    background-color: #0d1117;
+    min-height: 850px;
+    padding-bottom: 50px;
+}
+
+.table-box {
+    display: flex;
+    padding-top: 50px;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 60%;
+}
+
+.table-title {
+    font-size: 22px;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.table-title-row {
+    border-bottom: 1px solid #333;
+}
+
+.tableConcert {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #1e1e2f;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.tableConcert th,
+.tableConcert td {
+    padding: 12px 15px;
+    color: whitesmoke;
+}
+
+.tableConcert thead {
+    background-color: #2c2c3e;
+    text-align: left;
+}
+
+.tableConcert thead .details {
+    background-color: #2c2c3e;
+    text-align: left;
+    color: gray;
+}
+
+.tableConcert tbody tr {
+    border-bottom: 1px solid #333;
+}
+
+.tableConcert tbody tr:last-child {
+    border-bottom: none;
+}
+
+.tableConcert button {
+    padding: 6px 12px;
+    background-color: #ff3366;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.tableConcert button:hover {
+    background-color: #ff4d7a;
+}
+
+.bookModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+}
+
+.popup {
+    position: relative;
+    background: #2c2c3e;
+    padding: 20px 25px;
+    border-radius: 10px;
+    max-width: 320px;
+    text-align: center;
+}
+
+.popup h3 {
+    color: whitesmoke;
+}
+
+.closeBtn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: transparent;
+    border: none;
+    font-size: 18px;
+    color: whitesmoke;
+    cursor: pointer;
+}
+
+.modal-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.sendBtn {
+    border-radius: 8px;
+    border: none;
+    background-color: red;
+    height: 35px;
+    color: whitesmoke;
+    cursor: pointer;
+}
+
+.sendBtn:hover {
+    transform: scale(1.1);
+}
+
+/* КАРТОЧКИ УЧАСТНИКОВ - БАЗОВЫЕ СТИЛИ (ДЛЯ ПК > 1024px) */
+.members-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 20px;
+    width: 100%;
+}
+
+.members-block h2 {
+    padding-bottom: 30px;
+    font-size: 35px;
+    text-align: center;
+}
+
+/* СТИЛИ ДЛЯ ПК (ГОРИЗОНТАЛЬНЫЙ МАКЕТ) */
+.membersBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0; /* Убираем padding, так как на ПК он не нужен */
+    background-color: transparent; /* Убираем фон */
+    max-height: none; /* Убираем ограничение высоты */
+    overflow-y: visible; /* Убираем прокрутку */
+}
+
+.namesInBox {
+    display: flex;
+    background-color: rgba(128, 128, 128, 0.145);
+    align-items: center;
+    height: 40px;
+    border-radius: 0 0 12px 12px;
+    color: whitesmoke;
+}
+
+.namesInBox p {
+    padding: 10px;
+}
+
+.MaxymBox,
+.OlenaBox,
+.TarasBox {
+    width: 280px; /* Фиксированная ширина для ПК */
+    height: 270px; /* Фиксированная высота для ПК */
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+    border: 1px solid #444;
+    transition: transform 200ms ease, box-shadow 200ms ease;
+    transform-origin: center;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+.MaxymBox .photo {
+    flex: 1;
+    background-image: url(images/Max.jpg);
+    background-size: cover; /* cover для ПК */
+    background-position: center;
+}
+
+.OlenaBox .photo {
+    flex: 1;
+    background-image: url(images/Olena.jpg);
+    background-size: cover; /* cover для ПК */
+    background-position: center;
+}
+
+.TarasBox .photo {
+    flex: 1;
+    background-image: url(images/Taras.jpg);
+    background-size: cover; /* cover для ПК */
+    background-position: center;
+}
+
+.MaxymBox:hover,
+.OlenaBox:hover,
+.TarasBox:hover {
+    transform: scale(1.05);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+}
+
+.main-history {
+    background: linear-gradient(90deg, #0f212e 0%, #1c1c1c 50%, #2a1e2f 100%);
+    padding: 80px 20px 60px;
+}
+
+.main-history h2 {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto 20px;
+    text-align: left;
+    color: white;
+}
+
+.main-history-content {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 30px;
+}
+
+.main-history-story {
+    flex: 1;
+    color: whitesmoke;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.historyImg {
+    flex-shrink: 0;
+    width: 420px;
+}
+
+.historyImg img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.main-conect {
+    background: linear-gradient(180deg, #0f212e 0%, #1c1c1c 50%, #2a1e2f 100%);
+    position: relative;
+    min-height: 550px;
+    padding-bottom: 40px;
+}
+
+.content-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 80px;
+    margin-top: 40px;
+    padding: 0 20px;
+}
+
+.conectTitle {
+    color: grey;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 20px;
+}
+
+.usersInputBlock {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+}
+
+.usersIdeaBlock {
+    display: flex;
+    padding-top: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.usersInputBlock p {
+    color: whitesmoke;
+    padding-bottom: 6px;
+}
+
+.usersData {
+    border-radius: 10px;
+    width: 220px;
+    height: 35px;
+    background-color: #2c2c3e;
+    color: whitesmoke;
+    transition: 0.25s ease;
+    border: 1px solid #444;
+    padding: 5px 10px;
+}
+
+.usersData:hover {
+    transform: scale(1.05);
+    border-color: whitesmoke;
+}
+
+.usersData::placeholder {
+    padding: 5px;
+}
+
+.sendIdea {
+    padding-top: 10px;
+}
+
+.sendIdeaBtn {
+    width: 150px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: red;
+    color: whitesmoke;
+    font-size: 14px;
+    transition: 0.25s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.sendIdeaBtn:hover {
+    transform: scale(1.1);
+}
+
+.location {
+    border: 1px solid grey;
+    border-radius: 10px;
+    width: 400px;
+    height: 300px;
+    background-color: #2c2c3e;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.location h4 {
+    display: flex;
+    align-items: flex-start;
+    padding: 10px 0 10px 2px;
+}
+
+.map {
+    border-radius: 8px;
+}
+
+.locationMap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.location iframe {
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+    display: block;
+    box-sizing: border-box;
+}
+
+.footer-block {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+    padding: 25px;
+    flex-wrap: wrap;
+}
+
+.row1 {
+    display: flex;
+    flex-direction: column;
+    line-height: 35px;
+}
+
+.row2 {
+    display: flex;
+}
+
+/* --- АДАПТИВНЫЕ СТИЛИ (max-width: 1024px) --- */
+@media (max-width: 1024px) {
+    .navbar-box {
+        padding: 16px 50px 0;
+    }
+
+    /* ВЕРТИКАЛЬНЫЙ СПИСОК С ПРОКРУТКОЙ ДЛЯ ПЛАНШЕТОВ/МОБИЛЬНЫХ */
+    .membersBox {
+        width: 450px;
+        background-color: rgba(128, 128, 128, 0.53);
+        padding: 15px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        overflow-y: auto;
+        max-height: 600px;
+        /* Настройка скроллбара */
+        scrollbar-width: thin;
+        scrollbar-color: #888 #2c2c3e;
+    }
+
+    .membersBox::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    .membersBox::-webkit-scrollbar-track {
+        background: #2c2c3e;
+        border-radius: 10px;
+    }
+
+    .membersBox::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 10px;
+    }
+
+    .membersBox::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+
+    .MaxymBox,
+    .OlenaBox,
+    .TarasBox {
+        width: 100%; /* Карточки занимают всю ширину .membersBox */
+        max-width: none;
+        height: 320px;
+        flex-shrink: 0;
+        margin: 0;
+    }
+    
+    .MaxymBox .photo,
+    .OlenaBox .photo,
+    .TarasBox .photo {
+        height: 280px;
+        background-size: contain; /* contain для мобильных/планшетов */
+        background-repeat: no-repeat;
+    }
+    
+    .MaxymBox:hover,
+    .OlenaBox:hover,
+    .TarasBox:hover {
+        transform: scale(1.03);
+        background: rgba(255, 255, 255, 0.08);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+    }
+    
+    .main-history-content {
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+    }
+
+    .historyImg {
+        width: 100%;
+        max-width: 520px;
+    }
+
+    .main-history-story {
+        max-width: 100%;
+    }
+
+    .content-row {
+        flex-direction: column;
+        gap: 34px;
+    }
+
+    .usersInputBlock,
+    .usersIdeaBlock {
+        width: 100%;
+    }
+
+    .location {
+        width: 100%;
+        max-width: 500px;
+    }
+}
+
+/* --- АДАПТИВ ДЛЯ ПЛАНШЕТІВ І ТЕЛЕФОНІВ (до 800px) --- */
+@media (max-width: 800px) {
+    .navbar {
+        display: none;
+    }
+
+    .burger {
+        display: block;
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        color: whitesmoke;
+        z-index: 999;
+    }
+
+    .header-block {
+        padding: 20px;
+        height: 500px;
+    }
+
+    .header-content-title {
+        font-size: 24px;
+    }
+
+    .header-content {
+        line-height: 30px;
+        font-size: 14px;
+    }
+
+    .members-block {
+        padding: 30px 10px;
+    }
+
+    .members-block h2 {
+        font-size: 28px;
+        padding-bottom: 20px;
+    }
+
+    .membersBox {
+        width: 100%;
+        max-width: 450px;
+        max-height: 500px;
+        padding: 15px;
+        gap: 20px;
+    }
+
+    .MaxymBox,
+    .OlenaBox,
+    .TarasBox {
+        height: 280px;
+    }
+
+    .table-box {
+        width: 90%;
+    }
+
+    .main-history h2 {
+        font-size: 24px;
+        text-align: center;
+    }
+
+    .main-history-content {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .main-history-story {
+        font-size: 15px;
+        text-align: justify;
+    }
+
+    .content-row {
+        gap: 30px;
+    }
+
+    .usersInputBlock,
+    .usersIdeaBlock {
+        flex-direction: column;
+        padding: 0 20px;
+    }
+
+    .usersData {
+        width: 100%;
+    }
+
+    .location {
+        width: 95%;
+    }
+}
+
+/* --- АДАПТИВ ДЛЯ МОБІЛЬНИХ (до 600px) --- */
+@media (max-width: 600px) {
+    .header-block {
+        height: 450px;
+    }
+
+    .members-block h2 {
+        font-size: 24px;
+    }
+
+    .membersBox {
+        max-height: 450px;
+        gap: 18px;
+    }
+
+    .MaxymBox,
+    .OlenaBox,
+    .TarasBox {
+        height: 270px;
+    }
+
+    .table-box {
+        width: 95%;
+    }
+
+    .tableConcert th,
+    .tableConcert td {
+        padding: 8px 10px;
+        font-size: 13px;
+    }
+
+    .tableConcert button {
+        padding: 5px 8px;
+        font-size: 12px;
+    }
+
+    .footer-block {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+}
+
+/* --- АДАПТИВ ДЛЯ МАЛЕНЬКИХ ТЕЛЕФОНІВ (до 400px) --- */
+@media (max-width: 400px) {
+    .burger {
+        font-size: 22px;
+        padding: 8px 10px;
+        width: 70px;
+        top: 10px;
+        left: 10px;
+    }
+
+    .menu {
+        width: 160px;
+        font-size: 14px;
+        top: 45px;
+        left: 10px;
+        margin-top: 5px;
+    }
+
+    .menu a {
+        padding: 10px 12px;
+    }
+
+    .header-block {
+        height: 400px;
+    }
+
+    .header-content-title {
+        font-size: 20px;
+    }
+
+    .header-content {
+        font-size: 13px;
+        line-height: 26px;
+    }
+
+    .bookBtn,
+    .sendIdeaBtn {
+        width: 130px;
+        height: 32px;
+        font-size: 12px;
+    }
+
+    .members-block h2 {
+        font-size: 20px;
+        padding-bottom: 15px;
+    }
+
+    .membersBox {
+        max-height: 400px;
+        gap: 15px;
+        padding: 10px;
+    }
+
+    .MaxymBox,
+    .OlenaBox,
+    .TarasBox {
+        height: 250px;
+    }
+
+    .namesInBox {
+        height: 35px;
+    }
+
+    .namesInBox p {
+        padding: 8px;
+        font-size: 13px;
+    }
+
+    .table-box {
+        width: 98%;
+    }
+
+    .tableConcert th,
+    .tableConcert td {
+        padding: 6px 8px;
+        font-size: 12px;
+    }
+
+    .main-history {
+        padding: 40px 10px;
+    }
+
+    .main-history h2 {
+        font-size: 20px;
+    }
+
+    .main-history-story {
+        font-size: 13px;
+        line-height: 1.4;
+    }
+
+    .historyImg img {
+        max-height: 180px;
+    }
+
+    .content-row {
+        gap: 20px;
+        padding: 0 10px;
+    }
+
+    .usersInputBlock,
+    .usersIdeaBlock {
+        padding: 0 10px;
+        gap: 10px;
+    }
+
+    .location {
+        width: 95%;
+        height: 250px;
+        padding: 10px;
+    }
+
+    .location iframe {
+        height: 180px;
+    }
+
+    .footer-block {
+        gap: 15px;
+        padding: 15px 10px;
+    }
+
+    .footer-block p,
+    .footer-block a {
+        font-size: 13px;
+    }
+}
+
+/* --- АДАПТИВ ДЛЯ ДУЖЕ МАЛЕНЬКИХ ТЕЛЕФОНІВ (до 320px) --- */
+@media (max-width: 320px) {
+    .header-block {
+        height: 380px;
+    }
+
+    .membersBox {
+        max-height: 380px;
+    }
+
+    .MaxymBox,
+    .OlenaBox,
+    .TarasBox {
+        height: 230px;
+    }
+
+    .namesInBox p {
+        font-size: 12px;
+    }
+
+    .main-history-story {
+        font-size: 12px;
+    }
+
+    .location {
+        height: 230px;
+    }
+}
